@@ -1,0 +1,31 @@
+import string
+
+
+def caesar_cipher(text, shift):
+    letters = string.ascii_letters
+    shifted_letters = letters[shift:] + letters[:shift]
+    table = str.maketrans(letters, shifted_letters)
+    return text.translate(table)
+
+
+def main():
+    choice = input("Do you want to encrypt or decrypt? (Enter 'encrypt' or 'decrypt'): ").lower()
+
+    if choice == 'encrypt':
+        text = input("Please enter a text to encrypt: ")
+        shift = int(input("Enter the shift value: "))
+        encrypted_text = caesar_cipher(text, shift)
+        print("Encrypted text:", encrypted_text)
+
+    elif choice == 'decrypt':
+        text = input("Please enter a text to decrypt: ")
+        shift = int(input("Enter the shift value: "))
+        decrypted_text = caesar_cipher(text, -shift)
+        print("Decrypted text:", decrypted_text)
+
+    else:
+        print("Invalid choice. Please enter 'encrypt' or 'decrypt'.")
+
+
+if __name__ == "__main__":
+    main()
